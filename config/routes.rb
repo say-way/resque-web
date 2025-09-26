@@ -31,6 +31,8 @@ ResqueWeb::Engine.routes.draw do
   get '/stats/keys' => 'stats#keys'
   get '/stats/keys/:id' => 'stats#keys', :constraints => { :id => id_pattern }, as: :keys_statistic
 
+  get '/health', :to => proc { |env| [200, { "Content-Type" => "text/plain" }, ["OK"]] }
+    
   root :to => 'overview#show'
 
 end
